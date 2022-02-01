@@ -7,6 +7,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.delay
 
+// 스플래쉬 화면
 @Composable
 fun SplashScreen(
     navController: NavHostController

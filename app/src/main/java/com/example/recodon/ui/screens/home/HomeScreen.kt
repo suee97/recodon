@@ -3,11 +3,13 @@ package com.example.recodon.ui.screens.home
 import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.recodon.data.models.FeedObject
 import com.example.recodon.data.models.UserInfo
@@ -49,6 +51,7 @@ fun HomeScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(start = 12.dp, end = 12.dp)
             ) {
                 nowPoint(
                     curPoint = curPoint,
