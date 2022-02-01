@@ -13,7 +13,7 @@ fun SplashScreen(
     navController: NavHostController
 ) {
     LaunchedEffect(key1 = true) {
-        delay(2000)
+        delay(200) // 테스트 때문에 줄여놓음. 원래 2~3초
         navController.navigate("home")
     }
 
