@@ -7,16 +7,10 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun NowPoint(
-    curPoint: Int,
-    onClick: () -> Unit
+    curPoint: Int
 ) {
     Text(
-        text = curPoint.toString(),
-        fontSize = 30.sp
+        text = "point: ${curPoint}",
+        fontSize = 18.sp
     )
-    Button(onClick = {
-        onClick()
-    }) {
-        Text("point + 1", fontSize = 30.sp)
-    }
 }

@@ -1,5 +1,6 @@
 package com.example.recodon.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,30 +13,39 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.recodon.data.models.VisibleState
 
 // 목표 3개짜리 뷰
 @Composable
 fun GoalView(
     goalList: List<String>,
-    goalIndex: Int
+    goalIndex: Int,
+    onFirstGoalSuccessClicked: () -> Unit,
+    onSecondGoalSuccessClicked: () -> Unit,
+    onThirdGoalSuccessClicked: () -> Unit,
+    curVisibleState: VisibleState
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .border(2.dp, Color.Magenta)
     ) {
         GoalComponent(
             goalText = goalList[(goalIndex+3)%goalList.size],
-            onSuccessClicked = {},
-            onGiveUpClicked = {}
+            onSuccessClicked = { onFirstGoalSuccessClicked() },
+            onGiveUpClicked = {},
+            isVisible = curVisibleState.FIRST_GOAL
         )
         GoalComponent(
             goalText = goalList[(goalIndex+1)%goalList.size],
-            onSuccessClicked = {},
-            onGiveUpClicked = {}
+            onSuccessClicked = { onSecondGoalSuccessClicked() },
+            onGiveUpClicked = {},
+            isVisible = curVisibleState.SECOND_GOAL
         )
         GoalComponent(
             goalText = goalList[(goalIndex+2)%goalList.size],
-            onSuccessClicked = {},
-            onGiveUpClicked = {}
+            onSuccessClicked = { onThirdGoalSuccessClicked() },
+            onGiveUpClicked = {},
+            isVisible = curVisibleState.THIRD_GOAL
         )
     }
 }
@@ -45,32 +55,35 @@ fun GoalView(
 fun GoalComponent(
     goalText: String,
     onSuccessClicked: () -> Unit,
-    onGiveUpClicked: () -> Unit
+    onGiveUpClicked: () -> Unit,
+    isVisible: Boolean
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(4.dp))
-            .border(2.dp, Color.Magenta)
-    ) {
-        Row(
+    if (isVisible) {
+        Box(
             modifier = Modifier
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(color = Color.Green)
         ) {
-            Text(
+            Row(
                 modifier = Modifier
-                    .padding(vertical = 4.dp, horizontal = 4.dp),
-                text = goalText,
-                fontSize = 20.sp
-            )
-            Button(onClick = { onSuccessClicked() }) {
-                Text("완료")
-            }
-            Spacer(modifier = Modifier.width(10.dp))
-            Button(onClick = { onGiveUpClicked() }) {
-                Text("포기")
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    modifier = Modifier
+                        .padding(vertical = 4.dp, horizontal = 4.dp),
+                    text = goalText,
+                    fontSize = 20.sp
+                )
+                Button(onClick = { onSuccessClicked() }) {
+                    Text("완료")
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                Button(onClick = { onGiveUpClicked() }) {
+                    Text("포기")
+                }
             }
         }
     }

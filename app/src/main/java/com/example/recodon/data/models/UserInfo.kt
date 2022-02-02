@@ -8,7 +8,7 @@ import com.example.recodon.utils.Constants.DATABASE_TABLE
 data class UserInfo(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val nickName: String,
-    val feedObject: FeedObject,
     val point: Int,
-    val goalIndex: Int
+    val goalIndex: Int,
+    val visibleState: VisibleState
 )

@@ -1,9 +1,7 @@
 package com.example.recodon.data.viewmodels
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.recodon.data.models.FeedObject
 import com.example.recodon.data.models.UserInfo
 import com.example.recodon.data.repositories.FeedEarthRepository
 import com.example.recodon.utils.RequestState
@@ -72,4 +70,12 @@ class FeedEarthViewModel @Inject constructor(
             repository.resetGoalIndex()
         }
     }
+
+    // Reset Visible State to (true, true, true)
+    fun resetVisibleState(userInfo: UserInfo) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.resetVisibleState(userInfo = userInfo)
+        }
+    }
+
 }

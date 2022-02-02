@@ -12,8 +12,8 @@ import com.example.recodon.components.GoalResetButton
 import com.example.recodon.components.GoalView
 import com.example.recodon.components.NowPoint
 import com.example.recodon.components.PointResetButton
-import com.example.recodon.data.models.FeedObject
 import com.example.recodon.data.models.UserInfo
+import com.example.recodon.data.models.VisibleState
 import com.example.recodon.data.viewmodels.FeedEarthViewModel
 import com.example.recodon.utils.RequestState
 
@@ -29,23 +29,31 @@ fun HomeScreen(
     val allInfos by viewModel.allInfo.collectAsState()
     var curPoint by remember { mutableStateOf(0) }
     var goalIndex by remember { mutableStateOf(0) }
+    var curVisibleState by remember { mutableStateOf(VisibleState.STATE_111) }
 
     val goalList = listOf<String>(
         "음식 남기지 않기",
         "대중교통 이용하기",
         "분리수거 신경써서 하기",
-        "일회용품 컵 대신 텀블러나 머그컵 사용하기",
+        "텀블러나 머그컵 사용하기",
         "양치컵 사용하기",
-        "쓰레기는 챙겼다가 분리수거하기",
+        "쓰레기 분리수거하기",
         "나무젓가락 사용하지 않기"
     )
 
     if (allInfos is RequestState.Success) {
         if ((allInfos as RequestState.Success<List<UserInfo>>).data.isEmpty()) {
-            val emptyInfo = UserInfo(1, "nick_name", FeedObject.Tree, 0, 0)
+            val emptyInfo = UserInfo(
+                1,
+                "nick_name",
+                0,
+                0,
+                VisibleState.STATE_111
+            )
             viewModel.addInfo(userInfo = emptyInfo)
             curPoint = (allInfos as RequestState.Success<List<UserInfo>>).data[0].point
             goalIndex = (allInfos as RequestState.Success<List<UserInfo>>).data[0].goalIndex
+            curVisibleState = (allInfos as RequestState.Success<List<UserInfo>>).data[0].visibleState
         } else {
             // 모든 데이터 로그
             Log.d(
@@ -54,13 +62,13 @@ fun HomeScreen(
             )
             curPoint = (allInfos as RequestState.Success<List<UserInfo>>).data[0].point
             goalIndex = (allInfos as RequestState.Success<List<UserInfo>>).data[0].goalIndex
+            curVisibleState = (allInfos as RequestState.Success<List<UserInfo>>).data[0].visibleState
 
         }
     } else {
         Log.d("suee97", "allInfos RequestState is failed")
     }
     // =====================================================================================
-
 
 
     // View ================================================================================
@@ -71,27 +79,89 @@ fun HomeScreen(
                     .fillMaxWidth()
                     .padding(start = 12.dp, end = 12.dp)
             ) {
-                NowPoint(
-                    curPoint = curPoint,
-                    onClick = { viewModel.updatePoint() }
-                )
+
                 PointResetButton(onClick = { viewModel.resetPoint() })
                 GoalResetButton(
                     onClick = {
-                        if(goalIndex >= 99) {
-                            viewModel.resetGoalIndex()
+                        if (goalIndex >= 99) {
+                            val newInfo = UserInfo(
+                                1,
+                                "nick_name",
+                                curPoint,
+                                0,
+                                VisibleState.STATE_111
+                            )
+                            viewModel.resetVisibleState(userInfo = newInfo)
                         } else {
-                            viewModel.updateGoalIndex()
+                            val newInfo = UserInfo(
+                                1,
+                                "nick_name",
+                                curPoint,
+                                goalIndex + 3,
+                                VisibleState.STATE_111
+                            )
+                            viewModel.resetVisibleState(userInfo = newInfo)
                         }
                     }
                 )
                 GoalView(
                     goalList = goalList,
-                    goalIndex = goalIndex
+                    goalIndex = goalIndex,
+                    onFirstGoalSuccessClicked = {
+                        when(curVisibleState) {
+                            VisibleState.STATE_111 -> curVisibleState = VisibleState.STATE_011
+                            VisibleState.STATE_110 -> curVisibleState = VisibleState.STATE_010
+                            VisibleState.STATE_101 -> curVisibleState = VisibleState.STATE_001
+                            VisibleState.STATE_100 -> curVisibleState = VisibleState.STATE_000
+                        }
+                        val newInfo = UserInfo(
+                            1,
+                            "nick_name",
+                            curPoint + 1,
+                            goalIndex,
+                            curVisibleState
+                        )
+                        viewModel.resetVisibleState(userInfo = newInfo)
+                    },
+                    onSecondGoalSuccessClicked = {
+                        when(curVisibleState) {
+                            VisibleState.STATE_111 -> curVisibleState = VisibleState.STATE_101
+                            VisibleState.STATE_110 -> curVisibleState = VisibleState.STATE_100
+                            VisibleState.STATE_011 -> curVisibleState = VisibleState.STATE_001
+                            VisibleState.STATE_010 -> curVisibleState = VisibleState.STATE_000
+                        }
+                        val newInfo = UserInfo(
+                            1,
+                            "nick_name",
+                            curPoint + 1,
+                            goalIndex,
+                            curVisibleState
+                        )
+                        viewModel.resetVisibleState(userInfo = newInfo)
+                    },
+                    onThirdGoalSuccessClicked = {
+                        when(curVisibleState) {
+                            VisibleState.STATE_111 -> curVisibleState = VisibleState.STATE_110
+                            VisibleState.STATE_101 -> curVisibleState = VisibleState.STATE_100
+                            VisibleState.STATE_011 -> curVisibleState = VisibleState.STATE_010
+                            VisibleState.STATE_001 -> curVisibleState = VisibleState.STATE_000
+                        }
+                        val newInfo = UserInfo(
+                            1,
+                            "nick_name",
+                            curPoint + 1,
+                            goalIndex,
+                            curVisibleState
+                        )
+                        viewModel.resetVisibleState(userInfo = newInfo)
+                    },
+                    curVisibleState = curVisibleState
+                )
+                NowPoint(
+                    curPoint = curPoint
                 )
             }
         }
     )
     // ====================================================================================
 }
-

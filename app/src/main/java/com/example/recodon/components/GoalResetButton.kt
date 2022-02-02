@@ -19,7 +19,7 @@ fun GoalResetButton(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        Text("목표 갱신", fontSize = 20.sp)
+        Text("다음 날로 이동", fontSize = 20.sp)
         IconButton(onClick = {
             onClick()
         }) {
