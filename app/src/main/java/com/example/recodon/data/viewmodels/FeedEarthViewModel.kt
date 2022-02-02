@@ -72,9 +72,9 @@ class FeedEarthViewModel @Inject constructor(
     }
 
     // Reset Visible State to (true, true, true)
-    fun resetVisibleState(userInfo: UserInfo) {
+    fun updateInfo(userInfo: UserInfo) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.resetVisibleState(userInfo = userInfo)
+            repository.updateInfo(userInfo = userInfo)
         }
     }
 

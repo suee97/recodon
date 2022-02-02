@@ -34,8 +34,8 @@ class FeedEarthRepository @Inject constructor(
         feedDao.resetGoalIndex()
     }
 
-    suspend fun resetVisibleState(userInfo: UserInfo) {
-        feedDao.resetVisibleState(userInfo = userInfo)
+    suspend fun updateInfo(userInfo: UserInfo) {
+        feedDao.updateInfo(userInfo = userInfo)
     }
 
 }

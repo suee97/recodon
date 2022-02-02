@@ -91,7 +91,7 @@ fun HomeScreen(
                                 0,
                                 VisibleState.STATE_111
                             )
-                            viewModel.resetVisibleState(userInfo = newInfo)
+                            viewModel.updateInfo(userInfo = newInfo)
                         } else {
                             val newInfo = UserInfo(
                                 1,
@@ -100,7 +100,7 @@ fun HomeScreen(
                                 goalIndex + 3,
                                 VisibleState.STATE_111
                             )
-                            viewModel.resetVisibleState(userInfo = newInfo)
+                            viewModel.updateInfo(userInfo = newInfo)
                         }
                     }
                 )
@@ -121,7 +121,7 @@ fun HomeScreen(
                             goalIndex,
                             curVisibleState
                         )
-                        viewModel.resetVisibleState(userInfo = newInfo)
+                        viewModel.updateInfo(userInfo = newInfo)
                     },
                     onSecondGoalSuccessClicked = {
                         when(curVisibleState) {
@@ -137,7 +137,7 @@ fun HomeScreen(
                             goalIndex,
                             curVisibleState
                         )
-                        viewModel.resetVisibleState(userInfo = newInfo)
+                        viewModel.updateInfo(userInfo = newInfo)
                     },
                     onThirdGoalSuccessClicked = {
                         when(curVisibleState) {
@@ -153,7 +153,7 @@ fun HomeScreen(
                             goalIndex,
                             curVisibleState
                         )
-                        viewModel.resetVisibleState(userInfo = newInfo)
+                        viewModel.updateInfo(userInfo = newInfo)
                     },
                     curVisibleState = curVisibleState
                 )

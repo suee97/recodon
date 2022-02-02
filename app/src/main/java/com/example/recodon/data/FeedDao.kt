@@ -35,5 +35,5 @@ interface FeedDao {
 
     // VisibleState 초기화 to (true, true, true)
     @Update
-    suspend fun resetVisibleState(userInfo: UserInfo)
+    suspend fun updateInfo(userInfo: UserInfo)
 }
