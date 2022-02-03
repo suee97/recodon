@@ -43,13 +43,6 @@ class FeedEarthViewModel @Inject constructor(
         }
     }
 
-    // Update point += 1
-    fun updatePoint() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.updatePoint()
-        }
-    }
-
     // Reset point
     fun resetPoint() {
         viewModelScope.launch(Dispatchers.IO) {

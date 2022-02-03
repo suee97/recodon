@@ -18,10 +18,6 @@ class FeedEarthRepository @Inject constructor(
         feedDao.addInfo(userInfo = userInfo)
     }
 
-    suspend fun updatePoint() {
-        feedDao.updatePoint()
-    }
-
     suspend fun resetPoint() {
         feedDao.resetPoint()
     }

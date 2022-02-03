@@ -25,28 +25,33 @@ fun GoalView(
     onThirdGoalSuccessClicked: () -> Unit,
     curVisibleState: VisibleState
 ) {
-    Column(
+    Box(
         modifier = Modifier
-            .border(2.dp, Color.Magenta)
+            .fillMaxWidth().height(150.dp).border(2.dp, Color.Magenta)
     ) {
-        GoalComponent(
-            goalText = goalList[(goalIndex+3)%goalList.size],
-            onSuccessClicked = { onFirstGoalSuccessClicked() },
-            onGiveUpClicked = {},
-            isVisible = curVisibleState.FIRST_GOAL
-        )
-        GoalComponent(
-            goalText = goalList[(goalIndex+1)%goalList.size],
-            onSuccessClicked = { onSecondGoalSuccessClicked() },
-            onGiveUpClicked = {},
-            isVisible = curVisibleState.SECOND_GOAL
-        )
-        GoalComponent(
-            goalText = goalList[(goalIndex+2)%goalList.size],
-            onSuccessClicked = { onThirdGoalSuccessClicked() },
-            onGiveUpClicked = {},
-            isVisible = curVisibleState.THIRD_GOAL
-        )
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center
+        ) {
+            GoalComponent(
+                goalText = goalList[(goalIndex+3)%goalList.size],
+                onSuccessClicked = { onFirstGoalSuccessClicked() },
+                onGiveUpClicked = {},
+                isVisible = curVisibleState.FIRST_GOAL
+            )
+            GoalComponent(
+                goalText = goalList[(goalIndex+1)%goalList.size],
+                onSuccessClicked = { onSecondGoalSuccessClicked() },
+                onGiveUpClicked = {},
+                isVisible = curVisibleState.SECOND_GOAL
+            )
+            GoalComponent(
+                goalText = goalList[(goalIndex+2)%goalList.size],
+                onSuccessClicked = { onThirdGoalSuccessClicked() },
+                onGiveUpClicked = {},
+                isVisible = curVisibleState.THIRD_GOAL
+            )
+        }
     }
 }
 
@@ -62,14 +67,14 @@ fun GoalComponent(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(8.dp))
-                .background(color = Color.Green)
+                .padding(vertical = 4.dp)
+                .border(2.dp, Color.Black, RoundedCornerShape(6.dp))
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
+                horizontalArrangement = Arrangement.End
             ) {
                 Text(
                     modifier = Modifier
@@ -84,6 +89,28 @@ fun GoalComponent(
                 Button(onClick = { onGiveUpClicked() }) {
                     Text("포기")
                 }
+            }
+        }
+    } else {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp)
+                .border(2.dp, Color.Black, RoundedCornerShape(6.dp))
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.End
+            ) {
+                Text(
+                    modifier = Modifier
+                        .padding(vertical = 4.dp, horizontal = 4.dp),
+                    text = goalText,
+                    fontSize = 20.sp,
+                    color = Color.LightGray
+                )
             }
         }
     }

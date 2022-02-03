@@ -17,10 +17,6 @@ interface FeedDao {
     @Insert
     suspend fun addInfo(userInfo: UserInfo)
 
-    // Point + 1 최대 20
-    @Query("UPDATE user_info_table SET point = point + 1 WHERE point < 20")
-    suspend fun updatePoint()
-
     // Point 리셋
     @Query("UPDATE user_info_table SET point = 0")
     suspend fun resetPoint()
