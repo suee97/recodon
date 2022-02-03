@@ -27,7 +27,6 @@ class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
     private val viewModel : FeedEarthViewModel by viewModels()
 
-    @ExperimentalAnimationApi
     @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

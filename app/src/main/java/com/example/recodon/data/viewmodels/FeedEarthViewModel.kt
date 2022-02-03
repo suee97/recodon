@@ -1,8 +1,12 @@
 package com.example.recodon.data.viewmodels
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recodon.data.models.UserInfo
+import com.example.recodon.data.models.VisibleState
 import com.example.recodon.data.repositories.FeedEarthRepository
 import com.example.recodon.utils.RequestState
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -44,18 +48,28 @@ class FeedEarthViewModel @Inject constructor(
         }
     }
 
-    // Reset point
-    fun resetPoint() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.resetPoint()
-        }
-    }
-
     // Reset Visible State to (true, true, true)
     fun updateInfo(userInfo: UserInfo) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateInfo(userInfo = userInfo)
         }
+    }
+
+    // Initialize Data
+    var curPoint by mutableStateOf(0)
+    var goalIndex by mutableStateOf(0)
+    var curVisibleState by mutableStateOf(VisibleState.STATE_111)
+
+    // Update Info (목표 완료 시)
+    fun updateInfo() {
+        val newInfo = UserInfo(
+            1,
+            "nick_name",
+            curPoint + 1,
+            goalIndex,
+            curVisibleState
+        )
+        updateInfo(userInfo = newInfo)
     }
 
 }

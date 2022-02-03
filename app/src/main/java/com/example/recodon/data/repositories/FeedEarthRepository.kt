@@ -1,6 +1,5 @@
 package com.example.recodon.data.repositories
 
-import androidx.lifecycle.LiveData
 import com.example.recodon.data.FeedDao
 import com.example.recodon.data.models.UserInfo
 import dagger.hilt.android.scopes.ViewModelScoped
@@ -16,10 +15,6 @@ class FeedEarthRepository @Inject constructor(
 
     suspend fun addInfo(userInfo: UserInfo) {
         feedDao.addInfo(userInfo = userInfo)
-    }
-
-    suspend fun resetPoint() {
-        feedDao.resetPoint()
     }
 
     suspend fun updateInfo(userInfo: UserInfo) {

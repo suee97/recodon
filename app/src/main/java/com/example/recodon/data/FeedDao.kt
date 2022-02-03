@@ -1,6 +1,5 @@
 package com.example.recodon.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -17,11 +16,6 @@ interface FeedDao {
     @Insert
     suspend fun addInfo(userInfo: UserInfo)
 
-    // Point 리셋
-    @Query("UPDATE user_info_table SET point = 0")
-    suspend fun resetPoint()
-
-    // VisibleState 초기화 to (true, true, true)
     @Update
     suspend fun updateInfo(userInfo: UserInfo)
 }
