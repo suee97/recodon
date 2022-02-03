@@ -21,14 +21,6 @@ interface FeedDao {
     @Query("UPDATE user_info_table SET point = 0")
     suspend fun resetPoint()
 
-    // GoalIndex + 1
-    @Query("UPDATE user_info_table SET goalIndex = goalIndex + 3 WHERE goalIndex < 99")
-    suspend fun updateGoalIndex()
-
-    // GoalIndex 리셋 to 0
-    @Query("UPDATE user_info_table SET goalIndex = 0")
-    suspend fun resetGoalIndex()
-
     // VisibleState 초기화 to (true, true, true)
     @Update
     suspend fun updateInfo(userInfo: UserInfo)

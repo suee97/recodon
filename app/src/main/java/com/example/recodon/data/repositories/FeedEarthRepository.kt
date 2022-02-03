@@ -22,14 +22,6 @@ class FeedEarthRepository @Inject constructor(
         feedDao.resetPoint()
     }
 
-    suspend fun updateGoalIndex() {
-        feedDao.updateGoalIndex()
-    }
-
-    suspend fun resetGoalIndex() {
-        feedDao.resetGoalIndex()
-    }
-
     suspend fun updateInfo(userInfo: UserInfo) {
         feedDao.updateInfo(userInfo = userInfo)
     }

@@ -1,6 +1,5 @@
 package com.example.recodon.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,7 +8,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,19 +34,16 @@ fun GoalView(
             GoalComponent(
                 goalText = goalList[(goalIndex+3)%goalList.size],
                 onSuccessClicked = { onFirstGoalSuccessClicked() },
-                onGiveUpClicked = {},
                 isVisible = curVisibleState.FIRST_GOAL
             )
             GoalComponent(
                 goalText = goalList[(goalIndex+1)%goalList.size],
                 onSuccessClicked = { onSecondGoalSuccessClicked() },
-                onGiveUpClicked = {},
                 isVisible = curVisibleState.SECOND_GOAL
             )
             GoalComponent(
                 goalText = goalList[(goalIndex+2)%goalList.size],
                 onSuccessClicked = { onThirdGoalSuccessClicked() },
-                onGiveUpClicked = {},
                 isVisible = curVisibleState.THIRD_GOAL
             )
         }
@@ -60,7 +55,6 @@ fun GoalView(
 fun GoalComponent(
     goalText: String,
     onSuccessClicked: () -> Unit,
-    onGiveUpClicked: () -> Unit,
     isVisible: Boolean
 ) {
     if (isVisible) {
@@ -84,10 +78,6 @@ fun GoalComponent(
                 )
                 Button(onClick = { onSuccessClicked() }) {
                     Text("완료")
-                }
-                Spacer(modifier = Modifier.width(10.dp))
-                Button(onClick = { onGiveUpClicked() }) {
-                    Text("포기")
                 }
             }
         }

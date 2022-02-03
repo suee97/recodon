@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.recodon.data.models.UserInfo
 import com.example.recodon.data.repositories.FeedEarthRepository
 import com.example.recodon.utils.RequestState
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -47,20 +48,6 @@ class FeedEarthViewModel @Inject constructor(
     fun resetPoint() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.resetPoint()
-        }
-    }
-
-    // Update GoalIndex += 1
-    fun updateGoalIndex() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.updateGoalIndex()
-        }
-    }
-
-    // Reset GoalIndex
-    fun resetGoalIndex() {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.resetGoalIndex()
         }
     }
 

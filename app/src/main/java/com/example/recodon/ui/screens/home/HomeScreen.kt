@@ -10,7 +10,9 @@ import com.example.recodon.components.*
 import com.example.recodon.data.models.UserInfo
 import com.example.recodon.data.models.VisibleState
 import com.example.recodon.data.viewmodels.FeedEarthViewModel
+import com.example.recodon.ui.theme.StatusColor
 import com.example.recodon.utils.RequestState
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun HomeScreen(
@@ -63,13 +65,14 @@ fun HomeScreen(
             curVisibleState =
                 (allInfos as RequestState.Success<List<UserInfo>>).data[0].visibleState
         }
-    } else {
-        Log.d("suee97", "allInfos RequestState is failed")
     }
     // =====================================================================================
 
 
     // View ================================================================================
+    val systemUiController = rememberSystemUiController() // 상단 바 색상 조정
+    systemUiController.setSystemBarsColor(color = StatusColor)
+
     Scaffold(
         content = {
             Column(
