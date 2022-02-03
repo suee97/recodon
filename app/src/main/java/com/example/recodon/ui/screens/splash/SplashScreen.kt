@@ -19,7 +19,7 @@ fun SplashScreen(
     navController: NavHostController
 ) {
     LaunchedEffect(key1 = true) {
-        delay(200) // 테스트 때문에 줄여놓음. 2~3초로 변경해야 함
+        delay(2000) // 테스트 때문에 줄여놓음. 2~3초로 변경해야 함
         navController.navigate("home") {
             popUpTo("splash") { inclusive = true }
         }

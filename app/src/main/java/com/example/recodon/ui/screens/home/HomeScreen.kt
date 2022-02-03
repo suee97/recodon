@@ -1,5 +1,6 @@
 package com.example.recodon.ui.screens.home
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
@@ -15,36 +16,43 @@ import com.example.recodon.data.viewmodels.FeedEarthViewModel
 import com.example.recodon.ui.theme.StatusColor
 import com.example.recodon.utils.RequestState
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @ExperimentalMaterialApi
 @Composable
 fun HomeScreen(
     viewModel: FeedEarthViewModel
 ) {
-
     // Fetch & Update Data =========================================================================
     LaunchedEffect(key1 = true) {
         viewModel.getAllInfo()
     }
 
     val allInfos by viewModel.allInfo.collectAsState()
+    val scope = rememberCoroutineScope()
 
     if (allInfos is RequestState.Success) {
         // 데이터 비어있을 때, 초기 실행 시 초기화
         if ((allInfos as RequestState.Success<List<UserInfo>>).data.isEmpty()) {
-            val emptyInfo = UserInfo(
-                1,
-                "nick_name",
-                0,
-                0,
-                VisibleState.STATE_111
-            )
-            viewModel.addInfo(userInfo = emptyInfo)
-            viewModel.curPoint = (allInfos as RequestState.Success<List<UserInfo>>).data[0].point
-            viewModel.goalIndex =
-                (allInfos as RequestState.Success<List<UserInfo>>).data[0].goalIndex
-            viewModel.curVisibleState =
-                (allInfos as RequestState.Success<List<UserInfo>>).data[0].visibleState
+
+            scope.launch {
+                val emptyInfo = UserInfo(
+                    1,
+                    "nick_name",
+                    0,
+                    0,
+                    VisibleState.STATE_111
+                )
+                viewModel.addInfo(userInfo = emptyInfo)
+                delay(1000)
+                viewModel.curPoint = (allInfos as RequestState.Success<List<UserInfo>>).data[0].point
+                viewModel.goalIndex =
+                    (allInfos as RequestState.Success<List<UserInfo>>).data[0].goalIndex
+                viewModel.curVisibleState =
+                    (allInfos as RequestState.Success<List<UserInfo>>).data[0].visibleState
+            }
         } else {
             // 모든 데이터 로그
             Log.d(
