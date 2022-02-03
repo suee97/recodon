@@ -1,5 +1,6 @@
-package com.example.recodon.components
+package com.example.recodon.views
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,42 +19,54 @@ import com.example.recodon.utils.Constants.goalList
 @ExperimentalMaterialApi
 @Composable
 fun GoalView(
-    onFirstGoalSuccessClicked: () -> Unit,
-    onSecondGoalSuccessClicked: () -> Unit,
-    onThirdGoalSuccessClicked: () -> Unit,
+    onFirstGoalSwiped: () -> Unit,
+    onSecondGoalSwiped: () -> Unit,
+    onThirdGoalSwiped: () -> Unit,
+    onGoalResetClicked: () -> Unit,
     viewModel: FeedEarthViewModel
 ) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
+            .height(140.dp)
             .border(2.dp, Color.Magenta)
     ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.End
-            ) {
-                if (viewModel.curPoint < 20) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.End
+        ) {
+            if (viewModel.curPoint < 20) {
+                if (viewModel.curVisibleState == VisibleState.STATE_000) {
+
+                    // 하루 목표 3개 모두 끝냈을 때
+                    EmptyVisibleState(
+                        viewModel = viewModel,
+                        onClick = { onGoalResetClicked() }
+                    )
+
+                } else {
                     GoalComponent(
                         goalText = goalList[(viewModel.goalIndex + 3) % goalList.size],
-                        onSuccessClicked = { onFirstGoalSuccessClicked() },
+                        onSwiped = { onFirstGoalSwiped() },
                         isVisible = viewModel.curVisibleState.FIRST_GOAL
                     )
                     GoalComponent(
                         goalText = goalList[(viewModel.goalIndex + 1) % goalList.size],
-                        onSuccessClicked = { onSecondGoalSuccessClicked() },
+                        onSwiped = { onSecondGoalSwiped() },
                         isVisible = viewModel.curVisibleState.SECOND_GOAL
                     )
                     GoalComponent(
                         goalText = goalList[(viewModel.goalIndex + 2) % goalList.size],
-                        onSuccessClicked = { onThirdGoalSuccessClicked() },
+                        onSwiped = { onThirdGoalSwiped() },
                         isVisible = viewModel.curVisibleState.THIRD_GOAL
                     )
-                } else {
-                    Text("임무 완수", fontSize = 20.sp)
                 }
+            } else {
+                // 포인트 20 도달했을 때
+                Text("임무 완수", fontSize = 20.sp)
             }
+        }
 
     }
 }
@@ -63,7 +76,7 @@ fun GoalView(
 @Composable
 fun GoalComponent(
     goalText: String,
-    onSuccessClicked: () -> Unit,
+    onSwiped: () -> Unit,
     isVisible: Boolean
 ) {
     if (isVisible) {
@@ -72,7 +85,7 @@ fun GoalComponent(
         val swipeState = rememberDismissState(
             confirmStateChange = {
                 if (it == DismissValue.DismissedToStart) {
-                    onSuccessClicked()
+                    onSwiped()
                 }
                 true
             }
@@ -82,23 +95,19 @@ fun GoalComponent(
             state = swipeState,
             background = {},
             dismissContent = {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth(.8f)
-                        .padding(vertical = 4.dp)
-                        .border(2.dp, Color.Black, RoundedCornerShape(6.dp))
+                Card(
+                    border = BorderStroke(2.dp, Color.Black),
+                    shape = RoundedCornerShape(4.dp),
+                    elevation = 8.dp,
+                    modifier = Modifier.padding(vertical = 4.dp)
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.End
-                    ) {
+                    Row() {
                         Text(
                             modifier = Modifier
-                                .padding(vertical = 4.dp, horizontal = 4.dp),
+                                .padding(horizontal = 8.dp, vertical = 4.dp),
                             text = goalText,
-                            fontSize = 20.sp
+                            fontSize = 23.sp,
+                            style = MaterialTheme.typography.subtitle1
                         )
                     }
                 }

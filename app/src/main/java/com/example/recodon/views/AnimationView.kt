@@ -1,8 +1,8 @@
-package com.example.recodon.components
+package com.example.recodon.views
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,8 +20,8 @@ fun AnimationView(
     // Lottie Animation 으로 바꿔야 함
     Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .border(2.dp, Color.Magenta)
+            .fillMaxSize()
+            .border(2.dp, Color.Red)
     ) {
         when (curPoint) {
             in 0..2 -> Text("STEP 1", fontSize = 30.sp)
@@ -37,7 +37,7 @@ fun AnimationView(
 }
 
 @Composable
-fun AnimLoader() {
+fun ContentAnimation_Step1() {
 
     val compositionResult: LottieCompositionResult = rememberLottieComposition(
         spec = LottieCompositionSpec.RawRes(com.example.recodon.R.raw.bee)

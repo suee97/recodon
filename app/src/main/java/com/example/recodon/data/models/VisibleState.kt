@@ -1,7 +1,7 @@
 package com.example.recodon.data.models
 
 enum class VisibleState(
-    var FIRST_GOAL: Boolean,
+    val FIRST_GOAL: Boolean,
     val SECOND_GOAL: Boolean,
     val THIRD_GOAL: Boolean
 ) {
