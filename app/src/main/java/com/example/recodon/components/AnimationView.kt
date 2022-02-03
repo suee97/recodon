@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.sp
 fun AnimationView(
     curPoint: Int
 ) {
+
+    // Lottie Animation 으로 바꿔야 함
     Box(
         modifier = Modifier
             .fillMaxWidth()

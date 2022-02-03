@@ -1,7 +1,9 @@
 package com.example.recodon.ui.screens.home
 
 import android.util.Log
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -14,12 +16,14 @@ import com.example.recodon.ui.theme.StatusColor
 import com.example.recodon.utils.RequestState
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
+@ExperimentalAnimationApi
+@ExperimentalMaterialApi
 @Composable
 fun HomeScreen(
     viewModel: FeedEarthViewModel
 ) {
 
-    // Fetch Data =========================================================================
+    // Fetch & Update Data =========================================================================
     LaunchedEffect(key1 = true) {
         viewModel.getAllInfo()
     }
@@ -78,7 +82,7 @@ fun HomeScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 12.dp, end = 12.dp)
+                    .padding(start = 12.dp, end = 12.dp) // 모든 content에 대한 padding
             ) {
 
                 TodolistMsg(msg = "오늘의 목표")
