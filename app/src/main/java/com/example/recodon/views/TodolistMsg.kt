@@ -10,8 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.recodon.R
 import com.example.recodon.ui.theme.CustomFont1
 
 @Composable
@@ -21,11 +25,14 @@ fun TodolistMsg(
     Box() {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .border(2.dp, Color.Blue),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
+            val fontFamily = FontFamily(
+                Font(R.font.gowunbatang_bold, FontWeight.Bold),
+                Font(R.font.gowunbatang_regular, FontWeight.Normal)
+            )
             Icon(
                 modifier = Modifier.size(20.dp),
                 imageVector = Icons.Filled.West,
@@ -35,7 +42,8 @@ fun TodolistMsg(
             Text(
                 text = msg,
                 fontSize = 20.sp,
-                fontFamily = CustomFont1
+                fontFamily = fontFamily,
+                fontWeight = FontWeight.Normal
             )
         }
     }
