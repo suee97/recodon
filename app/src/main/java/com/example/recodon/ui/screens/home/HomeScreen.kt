@@ -75,11 +75,7 @@ fun HomeScreen(
     val systemUiController = rememberSystemUiController() // 상단 바 색상 조정
     systemUiController.setSystemBarsColor(color = StatusColor)
 
-    Box() {
-        Column {
-            AnimationView(curPoint = viewModel.curPoint)
-        }
-    }
+    AnimationView(viewModel = viewModel)
 
     Scaffold(
         backgroundColor = Color.Transparent,
