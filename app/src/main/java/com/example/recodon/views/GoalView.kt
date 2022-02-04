@@ -1,6 +1,7 @@
 package com.example.recodon.views
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -8,11 +9,17 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.recodon.R
 import com.example.recodon.data.models.VisibleState
 import com.example.recodon.data.viewmodels.FeedEarthViewModel
+import com.example.recodon.ui.theme.CustomFont2
 import com.example.recodon.utils.Constants.goalList
 
 // 목표 3개짜리 뷰
@@ -29,7 +36,7 @@ fun GoalView(
         modifier = Modifier
             .fillMaxWidth()
             .height(140.dp)
-//            .border(2.dp, Color.Magenta)
+
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -64,7 +71,12 @@ fun GoalView(
                 }
             } else {
                 // 포인트 20 도달했을 때
-                Text("임무 완수", fontSize = 20.sp)
+                Text(
+                    "임무 완수",
+                    fontSize = 20.sp,
+                    fontFamily = CustomFont2,
+                    fontWeight = FontWeight.Normal
+                )
             }
         }
 
@@ -96,17 +108,27 @@ fun GoalComponent(
             background = {},
             dismissContent = {
                 Card(
-                    border = BorderStroke(2.dp, Color.Black),
-                    shape = RoundedCornerShape(4.dp),
-                    elevation = 8.dp,
-                    modifier = Modifier.padding(vertical = 4.dp)
+                    modifier = Modifier
+                        .padding(vertical = 4.dp)
+                        .background(
+                            Color(0xFF7CBFAB),
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                        .alpha(0.5f)
+
                 ) {
                     Row() {
+                        val fontFamily = FontFamily(
+                            Font(R.font.gowunbatang_bold, FontWeight.Bold),
+                            Font(R.font.gowunbatang_regular, FontWeight.Normal)
+                        )
                         Text(
                             modifier = Modifier
                                 .padding(horizontal = 8.dp, vertical = 4.dp),
                             text = goalText,
                             fontSize = 23.sp,
+                            fontFamily = fontFamily,
+                            fontWeight = FontWeight.Normal,
                             style = MaterialTheme.typography.subtitle1
                         )
                     }

@@ -1,18 +1,10 @@
 package com.example.recodon.views
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.*
 import com.example.recodon.data.viewmodels.FeedEarthViewModel
 
@@ -20,12 +12,9 @@ import com.example.recodon.data.viewmodels.FeedEarthViewModel
 fun AnimationView(
     viewModel: FeedEarthViewModel
 ) {
-
-    // Lottie Animation 으로 바꿔야 함
     Box(
         modifier = Modifier
             .fillMaxSize()
-//            .border(2.dp, Color.Red)
     ) {
         when (viewModel.curPoint) {
             in 0..2 -> {

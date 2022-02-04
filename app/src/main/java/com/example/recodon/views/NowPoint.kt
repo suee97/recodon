@@ -8,10 +8,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.recodon.R
 import com.example.recodon.data.viewmodels.FeedEarthViewModel
 import com.example.recodon.ui.theme.CustomFont1
+import com.example.recodon.ui.theme.CustomFont2
 
 @Composable
 fun NowPoint(
@@ -20,13 +25,13 @@ fun NowPoint(
     Row(
         modifier = Modifier
             .fillMaxWidth(),
-//            .border(2.dp, Color.Gray),
         horizontalArrangement = Arrangement.End
     ) {
         Text(
             text = "Point ${viewModel.curPoint} / 20",
             fontSize = 18.sp,
-            fontFamily = CustomFont1
+            fontFamily = CustomFont2,
+            fontWeight = FontWeight.Normal
         )
     }
 }

@@ -16,20 +16,22 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
     )
-    /* Other default text styles to override
-    button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp
-    ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
-    )
-    */
 )
 
 val CustomFont1 = FontFamily(
     Font(R.font.font1)
+)
+
+val CustomFont2 = FontFamily(
+    Font(R.font.gowunbatang_bold, FontWeight.Bold),
+    Font(R.font.gowunbatang_regular, FontWeight.Normal)
+)
+
+val CustomFont3 = FontFamily(
+    Font(R.font.lexend_light, FontWeight.Light),
+    Font(R.font.lexend_regular, FontWeight.Normal),
+    Font(R.font.lexend_medium, FontWeight.Medium),
+    Font(R.font.lexend_semibold, FontWeight.SemiBold),
+    Font(R.font.lexend_bold, FontWeight.Bold),
+    Font(R.font.lexend_extrabold, FontWeight.ExtraBold)
 )
