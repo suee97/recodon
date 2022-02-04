@@ -39,15 +39,17 @@ fun SplashScreen(
 ) {
     LaunchedEffect(key1 = true) {
         delay(2000) // 테스트 때문에 줄여놓음. 원래 2~3초
-        navController.navigate("home")
+        navController.navigate("home") {
+            popUpTo("splash") { inclusive = true }
+        }
     }
 
-    Loader()
+    SplashAnimation()
 
 }
 
 @Composable
-private fun Loader() {
+private fun SplashAnimation() {
     val fontFamily = FontFamily(
         Font(R.font.lexend_light, FontWeight.Light),
         Font(R.font.lexend_regular, FontWeight.Normal),
@@ -70,14 +72,6 @@ private fun Loader() {
         iterations = LottieConstants.IterateForever,
         speed = 1.0f
     )
-
-    // Create a MutableTransitionState<Boolean> for the AnimatedVisibility.
-    val state = remember {
-        MutableTransitionState(false).apply {
-            // Start the animation immediately.
-            targetState = true
-        }
-    }
 
     Surface(
         modifier = Modifier

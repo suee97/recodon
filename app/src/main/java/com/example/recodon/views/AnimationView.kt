@@ -24,7 +24,7 @@ fun AnimationView(
             .border(2.dp, Color.Red)
     ) {
         when (curPoint) {
-            in 0..2 -> ContentAnimation_Step1()
+            in 0..2 -> {}
             in 3..5 -> {}
             in 6..8 -> {}
             in 9..11 -> {}
@@ -37,10 +37,10 @@ fun AnimationView(
 }
 
 @Composable
-fun ContentAnimation_Step1() {
+fun ContentAnimation(type: Int) {
 
     val compositionResult: LottieCompositionResult = rememberLottieComposition(
-        spec = LottieCompositionSpec.RawRes(com.example.recodon.R.raw.bee)
+        spec = LottieCompositionSpec.RawRes(com.example.recodon.R.raw.splashimage)
     )
 
     val progress by animateLottieCompositionAsState(

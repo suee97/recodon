@@ -76,7 +76,9 @@ fun HomeScreen(
     systemUiController.setSystemBarsColor(color = StatusColor)
 
     Box() {
-        AnimationView(curPoint = viewModel.curPoint)
+        Column {
+            AnimationView(curPoint = viewModel.curPoint)
+        }
     }
 
     Scaffold(
