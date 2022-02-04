@@ -24,14 +24,14 @@ fun AnimationView(
             .border(2.dp, Color.Red)
     ) {
         when (curPoint) {
-            in 0..2 -> Text("STEP 1", fontSize = 30.sp)
-            in 3..5 -> Text("STEP 2", fontSize = 30.sp)
-            in 6..8 -> Text("STEP 3", fontSize = 30.sp)
-            in 9..11 -> Text("STEP 4", fontSize = 30.sp)
-            in 12..14 -> Text("STEP 5", fontSize = 30.sp)
-            in 15..17 -> Text("STEP 6", fontSize = 30.sp)
-            in 18..19 -> Text("STEP 7", fontSize = 30.sp)
-            20 -> Text("COMPLETE", fontSize = 30.sp)
+            in 0..2 -> ContentAnimation_Step1()
+            in 3..5 -> {}
+            in 6..8 -> {}
+            in 9..11 -> {}
+            in 12..14 -> {}
+            in 15..17 -> {}
+            in 18..19 -> {}
+            20 -> {}
         }
     }
 }

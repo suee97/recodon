@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,8 +17,10 @@ import com.example.recodon.data.viewmodels.FeedEarthViewModel
 import com.example.recodon.ui.theme.StatusColor
 import com.example.recodon.utils.RequestState
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.concurrent.timer
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @ExperimentalMaterialApi
@@ -36,7 +39,6 @@ fun HomeScreen(
     if (allInfos is RequestState.Success) {
         // 데이터 비어있을 때, 초기 실행 시 초기화
         if ((allInfos as RequestState.Success<List<UserInfo>>).data.isEmpty()) {
-
             scope.launch {
                 val emptyInfo = UserInfo(
                     1,
@@ -46,7 +48,7 @@ fun HomeScreen(
                     VisibleState.STATE_111
                 )
                 viewModel.addInfo(userInfo = emptyInfo)
-                delay(1000)
+                delay(1000) // 초기 DB 만드는 시간 제공
                 viewModel.curPoint = (allInfos as RequestState.Success<List<UserInfo>>).data[0].point
                 viewModel.goalIndex =
                     (allInfos as RequestState.Success<List<UserInfo>>).data[0].goalIndex
