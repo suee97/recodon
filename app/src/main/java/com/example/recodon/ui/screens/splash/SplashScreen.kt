@@ -21,6 +21,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.recodon.R
 import com.example.recodon.ui.theme.CustomFont2
+import com.example.recodon.ui.theme.StatusColor
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 // 스플래쉬 화면
@@ -28,8 +30,11 @@ import com.example.recodon.ui.theme.CustomFont2
 fun SplashScreen(
     navController: NavHostController
 ) {
+    val systemUiController = rememberSystemUiController() // 상단 바 색상 조정
+    systemUiController.setSystemBarsColor(color = Color.Transparent)
+
     LaunchedEffect(key1 = true) {
-        delay(2000) // 테스트 때문에 줄여놓음. 원래 2~3초
+        delay(2500) // 테스트 때문에 줄여놓음. 원래 2~3초
         navController.navigate("home") {
             popUpTo("splash") { inclusive = true }
         }
@@ -44,7 +49,7 @@ private fun SplashAnimation() {
     val compositionResult: LottieCompositionResult =
         rememberLottieComposition(
             spec = LottieCompositionSpec.RawRes(
-                R.raw.splashimage
+                R.raw.splash_lottie
             )
         )
     val progress by animateLottieCompositionAsState(
@@ -71,7 +76,7 @@ private fun SplashAnimation() {
                 modifier = Modifier.size(250.dp)
             )
             Text(
-                "Envelope\nFor Our Planet",
+                "Feed\bThe Earth",
                 color = Color(0xFF479156),
                 fontSize = 30.sp,
                 fontFamily = CustomFont2,
