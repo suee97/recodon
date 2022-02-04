@@ -19,8 +19,8 @@ fun NowPoint(
 ) {
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .border(2.dp, Color.Gray),
+            .fillMaxWidth(),
+//            .border(2.dp, Color.Gray),
         horizontalArrangement = Arrangement.End
     ) {
         Text(

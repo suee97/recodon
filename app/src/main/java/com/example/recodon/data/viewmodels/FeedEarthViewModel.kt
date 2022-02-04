@@ -73,4 +73,5 @@ class FeedEarthViewModel @Inject constructor(
         )
         updateInfo(userInfo = newInfo)
     }
+
 }

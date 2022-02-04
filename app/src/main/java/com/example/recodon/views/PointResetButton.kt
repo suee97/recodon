@@ -21,7 +21,7 @@ fun PointResetButton(
     onClick: () -> Unit
 ) {
     Row(
-        modifier = Modifier.border(2.dp, Color.Red),
+//        modifier = Modifier.border(2.dp, Color.Red),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {

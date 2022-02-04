@@ -25,37 +25,39 @@ fun AnimationView(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .border(2.dp, Color.Red)
+//            .border(2.dp, Color.Red)
     ) {
         when (viewModel.curPoint) {
             in 0..2 -> {
-                ContentAnimation(
-                    rawInt = com.example.recodon.R.raw.step1,
-                    modifier = Modifier.offset(y = 220.dp)
-                )
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_1)
             }
             in 3..5 -> {
-                ContentAnimation(
-                    rawInt = com.example.recodon.R.raw.step1,
-                    modifier = Modifier.offset(x = 100.dp, y = 220.dp)
-                )
-                ContentAnimation(
-                    rawInt = com.example.recodon.R.raw.step2,
-                    modifier = Modifier
-                )
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_2)
             }
-            in 6..8 -> {}
-            in 9..11 -> {}
-            in 12..14 -> {}
-            in 15..17 -> {}
-            in 18..19 -> {}
-            20 -> {}
+            in 6..8 -> {
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_3)
+            }
+            in 9..11 -> {
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_4)
+            }
+            in 12..14 -> {
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_5)
+            }
+            in 15..17 -> {
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_6)
+            }
+            in 18..19 -> {
+                ContentAnimation(rawInt = com.example.recodon.R.raw.new7)
+            }
+            20 -> {
+                ContentAnimation(rawInt = com.example.recodon.R.raw.new7)
+            }
         }
     }
 }
 
 @Composable
-fun ContentAnimation(rawInt: Int, modifier: Modifier) {
+fun ContentAnimation(rawInt: Int) {
 
     val compositionResult: LottieCompositionResult = rememberLottieComposition(
         spec = LottieCompositionSpec.RawRes(rawInt)
@@ -68,6 +70,6 @@ fun ContentAnimation(rawInt: Int, modifier: Modifier) {
         speed = 1.0f
     )
 
-    LottieAnimation(compositionResult.value, progress, modifier)
+    LottieAnimation(compositionResult.value, progress)
 
 }

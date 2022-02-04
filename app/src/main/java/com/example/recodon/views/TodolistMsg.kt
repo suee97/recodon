@@ -21,8 +21,8 @@ fun TodolistMsg(
     Box() {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .border(2.dp, Color.Blue),
+                .fillMaxWidth(),
+//                .border(2.dp, Color.Blue),
             horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {

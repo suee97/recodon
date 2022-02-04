@@ -27,7 +27,9 @@ fun EmptyVisibleState(
 ) {
     Box() {
         Column(
-            modifier = Modifier.fillMaxWidth().border(2.dp, Color.Black),
+            modifier = Modifier
+                .fillMaxWidth(),
+//                .border(2.dp, Color.Black),
             horizontalAlignment = Alignment.End
         ) {
             Text(

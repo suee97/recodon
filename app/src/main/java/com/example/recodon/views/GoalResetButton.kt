@@ -20,7 +20,7 @@ fun GoalResetButton(
     onClick: () -> Unit
 ) {
     Row(
-        modifier = Modifier.border(2.dp, Color.Cyan),
+//        modifier = Modifier.border(2.dp, Color.Cyan),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {

@@ -29,7 +29,7 @@ fun GoalView(
         modifier = Modifier
             .fillMaxWidth()
             .height(140.dp)
-            .border(2.dp, Color.Magenta)
+//            .border(2.dp, Color.Magenta)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
