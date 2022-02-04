@@ -2,12 +2,8 @@ package com.example.recodon.ui.screens.splash
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import android.view.Surface
-import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -17,20 +13,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.airbnb.lottie.compose.*
 import kotlinx.coroutines.delay
-import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Paint
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.airbnb.lottie.compose.*
 import com.example.recodon.R
-import com.example.recodon.ui.theme.CustomFont3
+import com.example.recodon.ui.theme.CustomFont2
 
 
 // 스플래쉬 화면
@@ -84,7 +74,7 @@ private fun SplashAnimation() {
                 "Envelope\nFor Our Planet",
                 color = Color(0xFF479156),
                 fontSize = 30.sp,
-                fontFamily = CustomFont3,
+                fontFamily = CustomFont2,
                 modifier = Modifier
                     .padding(2.dp),
                 fontWeight = FontWeight.ExtraBold,

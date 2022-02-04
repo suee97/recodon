@@ -1,8 +1,6 @@
 package com.example.recodon.views
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -11,15 +9,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.recodon.R
 import com.example.recodon.data.models.VisibleState
 import com.example.recodon.data.viewmodels.FeedEarthViewModel
-import com.example.recodon.ui.theme.CustomFont2
+import com.example.recodon.ui.theme.CustomFont1
 import com.example.recodon.utils.Constants.goalList
 
 // 목표 3개짜리 뷰
@@ -74,7 +69,7 @@ fun GoalView(
                 Text(
                     "임무 완수",
                     fontSize = 20.sp,
-                    fontFamily = CustomFont2,
+                    fontFamily = CustomFont1,
                     fontWeight = FontWeight.Normal
                 )
             }
@@ -115,19 +110,14 @@ fun GoalComponent(
                             shape = RoundedCornerShape(12.dp)
                         )
                         .alpha(0.5f)
-
                 ) {
                     Row() {
-                        val fontFamily = FontFamily(
-                            Font(R.font.gowunbatang_bold, FontWeight.Bold),
-                            Font(R.font.gowunbatang_regular, FontWeight.Normal)
-                        )
                         Text(
                             modifier = Modifier
                                 .padding(horizontal = 8.dp, vertical = 4.dp),
                             text = goalText,
                             fontSize = 23.sp,
-                            fontFamily = fontFamily,
+                            fontFamily = CustomFont1,
                             fontWeight = FontWeight.Normal,
                             style = MaterialTheme.typography.subtitle1
                         )

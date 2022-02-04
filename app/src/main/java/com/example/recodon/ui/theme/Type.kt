@@ -19,15 +19,11 @@ val Typography = Typography(
 )
 
 val CustomFont1 = FontFamily(
-    Font(R.font.font1)
-)
-
-val CustomFont2 = FontFamily(
     Font(R.font.gowunbatang_bold, FontWeight.Bold),
     Font(R.font.gowunbatang_regular, FontWeight.Normal)
 )
 
-val CustomFont3 = FontFamily(
+val CustomFont2 = FontFamily(
     Font(R.font.lexend_light, FontWeight.Light),
     Font(R.font.lexend_regular, FontWeight.Normal),
     Font(R.font.lexend_medium, FontWeight.Medium),

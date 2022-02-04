@@ -86,7 +86,7 @@ fun HomeScreen(
                     .padding(start = 12.dp, end = 12.dp) // 모든 Content 에 대한 padding
             ) {
 
-                Spacer(modifier = Modifier.height(100.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 TodolistMsg(
                     msg = "Swipe to complete"

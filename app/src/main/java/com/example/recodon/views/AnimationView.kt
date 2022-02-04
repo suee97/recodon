@@ -18,35 +18,35 @@ fun AnimationView(
     ) {
         when (viewModel.curPoint) {
             in 0..2 -> {
-                ContentAnimation(rawInt = com.example.recodon.R.raw.step_1)
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_1, speed = 1.0f)
             }
             in 3..5 -> {
-                ContentAnimation(rawInt = com.example.recodon.R.raw.step_2)
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_2, speed = 1.0f)
             }
             in 6..8 -> {
-                ContentAnimation(rawInt = com.example.recodon.R.raw.step_3)
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_3, speed = 1.0f)
             }
             in 9..11 -> {
-                ContentAnimation(rawInt = com.example.recodon.R.raw.step_4)
+                ContentAnimation(rawInt = com.example.recodon.R.raw.new4, speed = 1.0f)
             }
             in 12..14 -> {
-                ContentAnimation(rawInt = com.example.recodon.R.raw.step_5)
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_5, speed = 1.0f)
             }
             in 15..17 -> {
-                ContentAnimation(rawInt = com.example.recodon.R.raw.step_6)
+                ContentAnimation(rawInt = com.example.recodon.R.raw.step_6, speed = 1.0f)
             }
             in 18..19 -> {
-                ContentAnimation(rawInt = com.example.recodon.R.raw.new7)
+                ContentAnimation(rawInt = com.example.recodon.R.raw.new7, speed = 1.0f)
             }
             20 -> {
-                ContentAnimation(rawInt = com.example.recodon.R.raw.new7)
+                ContentAnimation(rawInt = com.example.recodon.R.raw.new7, speed = 3.0f)
             }
         }
     }
 }
 
 @Composable
-fun ContentAnimation(rawInt: Int) {
+fun ContentAnimation(rawInt: Int, speed: Float) {
 
     val compositionResult: LottieCompositionResult = rememberLottieComposition(
         spec = LottieCompositionSpec.RawRes(rawInt)
@@ -56,7 +56,7 @@ fun ContentAnimation(rawInt: Int) {
         compositionResult.value,
         isPlaying = true,
         iterations = LottieConstants.IterateForever,
-        speed = 1.0f
+        speed = speed
     )
 
     LottieAnimation(compositionResult.value, progress)

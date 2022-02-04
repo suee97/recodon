@@ -1,7 +1,7 @@
 package com.example.recodon.views
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -10,23 +10,15 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.recodon.R
 import com.example.recodon.data.viewmodels.FeedEarthViewModel
-import com.example.recodon.ui.theme.CustomFont2
-import kotlin.concurrent.timer
+import com.example.recodon.ui.theme.CustomFont1
 
 @Composable
 fun EmptyVisibleState(
@@ -42,37 +34,32 @@ fun EmptyVisibleState(
             .alpha(0.5f)
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.End
         ) {
             Text(
-                text = "오늘의 목표를 모두 완수하셨습니다.",
+                modifier = Modifier.padding(horizontal = 8.dp),
+                text = "오늘의 목표를 모두 완수하셨습니다",
                 fontSize = 21.sp,
-                fontFamily = CustomFont2,
-                fontWeight = FontWeight.Normal
-            )
-            Text(
-                text = " 뒤에 목표가 초기화됩니다.",
-                fontSize = 21.sp,
-                fontFamily = CustomFont2,
+                fontFamily = CustomFont1,
                 fontWeight = FontWeight.Normal
             )
             Row(
-                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
             ) {
                 Text(
-                    text = "수동으로 초기화하기",
+                    modifier = Modifier.padding(horizontal = 8.dp),
+                    text = "수동으로 초기화",
                     fontSize = 21.sp,
-                    fontFamily = CustomFont2,
+                    fontFamily = CustomFont1,
                     fontWeight = FontWeight.Normal
                 )
-                IconButton(onClick = {
-                    onClick()
-                }) {
-                    Icon(imageVector = Icons.Filled.Refresh, contentDescription = "Reset Button")
-                }
+                Icon(
+                    modifier = Modifier.padding(end = 8.dp).clickable { onClick() },
+                    imageVector = Icons.Filled.Refresh,
+                    contentDescription = "Reset Button"
+                )
+
             }
         }
     }

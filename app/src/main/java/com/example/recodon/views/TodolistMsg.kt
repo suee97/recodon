@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
-import com.example.recodon.ui.theme.CustomFont2
+import com.example.recodon.ui.theme.CustomFont1
 
 @Composable
 fun TodolistMsg(
@@ -33,7 +33,7 @@ fun TodolistMsg(
             Text(
                 text = msg,
                 fontSize = 20.sp,
-                fontFamily = CustomFont2,
+                fontFamily = CustomFont1,
                 fontWeight = FontWeight.Normal
             )
         }

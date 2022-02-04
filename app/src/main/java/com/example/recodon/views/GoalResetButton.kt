@@ -1,6 +1,7 @@
 package com.example.recodon.views
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -16,14 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 import androidx.compose.ui.unit.sp
-import com.example.recodon.R
-import com.example.recodon.ui.theme.CustomFont2
+import com.example.recodon.ui.theme.CustomFont1
 
 @Composable
 fun GoalResetButton(
@@ -41,15 +39,17 @@ fun GoalResetButton(
             .height(40.dp)
             .alpha(0.5f)
     ) {
-        Text("다음 날로 이동",
+        Text(
+            modifier = Modifier.padding(horizontal = 8.dp),
+            text = "목표 리셋",
             fontSize = 20.sp,
-            fontFamily = CustomFont2,
+            fontFamily = CustomFont1,
             fontWeight = FontWeight.Normal
         )
-        IconButton(onClick = {
-            onClick()
-        }) {
-            Icon(imageVector = Icons.Filled.Refresh, contentDescription = "Reset Button")
-        }
+        Icon(
+            modifier = Modifier.padding(end = 8.dp).clickable { onClick() },
+            imageVector = Icons.Filled.Refresh,
+            contentDescription = "Reset Button"
+        )
     }
 }
