@@ -1,6 +1,2 @@
-팀원: 오승언, 신유빈  
-Jetpack compose  
-Lottie Library  
-MVVM  
-Room database  
-Dagger-Hilt  
+2022 GDSC 해커톤 참가 프로젝트입니다.  
+오승언, 신유빈
